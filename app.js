@@ -4,6 +4,14 @@ const app = express();
 let PORT= 4000
 app.use(express.json())
 
+app.get('/welcome/:username', (req, res) => {
+  const username = req.params.username;       // Route parameter
+  const role = req.query.role || 'Guest';     // Query parameter (with default)
+
+  res.send(`Welcome ${username}, your role is ${role}`);
+});
+
+
 
 app.products('/orders', (req, res) => {
   res.send("Here is the list of all products.");
